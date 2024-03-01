@@ -1,0 +1,4 @@
+.idea/
+backend/src/main/resources/
+backend/target/
+backend/.mvn/
