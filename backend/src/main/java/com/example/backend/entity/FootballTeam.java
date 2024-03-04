@@ -1,5 +1,6 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,13 +21,14 @@ import org.hibernate.annotations.UuidGenerator;
 public class FootballTeam {
     @Id
     @UuidGenerator
+    @JsonIgnore
     @Column(name = "id", unique = true, updatable = false)
     private String id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "country")
+    @Column(name = "country", nullable = false)
     private String country;
 }
 

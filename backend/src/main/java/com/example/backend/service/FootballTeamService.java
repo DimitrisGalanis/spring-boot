@@ -3,7 +3,6 @@ package com.example.backend.service;
 import com.example.backend.entity.FootballTeam;
 import com.example.backend.repository.FootballTeamRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -39,12 +38,11 @@ public class FootballTeamService {
     }
 
 
-    public void deleteFootballTeam(String id) {
-        footballTeamRepository.deleteById(id);
+    public FootballTeam deleteFootballTeam(String id) {
+        FootballTeam ft = footballTeamRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        footballTeamRepository.delete(ft);
+        return ft;
     }
-
-
-
 
 
 }

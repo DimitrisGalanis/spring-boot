@@ -3,13 +3,10 @@ package com.example.backend.controller;
 
 import com.example.backend.entity.FootballTeam;
 import com.example.backend.service.FootballTeamService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import java.net.URI;
 import java.util.Collection;
@@ -41,8 +38,8 @@ public class FootballTeamController {
     }
 
    @DeleteMapping("/{id}")
-    public void deleteFootballTeam(@PathVariable String id) {
-       footballTeamService.deleteFootballTeam(id);
+    public ResponseEntity<FootballTeam> deleteFootballTeam(@PathVariable String id) {
+       return ResponseEntity.ok().body(footballTeamService.deleteFootballTeam(id));
    }
 
 }
