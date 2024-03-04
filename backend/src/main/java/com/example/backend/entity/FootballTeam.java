@@ -21,7 +21,7 @@ import org.hibernate.annotations.UuidGenerator;
 public class FootballTeam {
     @Id
     @UuidGenerator
-    @JsonIgnore
+    //@JsonIgnore
     @Column(name = "id", unique = true, updatable = false)
     private String id;
 
