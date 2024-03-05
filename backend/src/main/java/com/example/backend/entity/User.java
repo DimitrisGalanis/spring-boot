@@ -2,10 +2,7 @@ package com.example.backend.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,14 +14,14 @@ import org.hibernate.annotations.UuidGenerator;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Users_dummy")
+@Table(name = "users_dummy")
 public class User {
     @Id
-    @UuidGenerator
-    @Column(name = "id", unique = true, updatable = false)
-    String id;
+    @GeneratedValue ( strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", updatable = false)
+    Long id;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     String username;
 
     @Column(name = "password_hash", nullable = false)
